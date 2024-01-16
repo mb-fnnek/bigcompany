@@ -4,15 +4,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fnnek.bigcompany.service.CompanyService;
-import com.fnnek.bigcompany.service.OrderService;
+import com.fnnek.bigcompany.service.NewOrderService;
 
 @RestController
 @RequestMapping("order")
 public class OrderController {
-    private final OrderService orderService;
+    private final NewOrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(NewOrderService orderService) {
         this.orderService = orderService;
     }
 
@@ -23,10 +22,17 @@ public class OrderController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/stream")
-    public ResponseEntity populateOrders() {
-        orderService.printAllOrdersStream();
+        @PostMapping("/list2")
+    public ResponseEntity populateCompaniesAndClients2() {
+        orderService.printAllOrders2();
         
         return ResponseEntity.ok().build();
     }
+
+   // @PostMapping("/stream")
+ //   public ResponseEntity populateOrders() {
+     //   orderService.printAllOrdersStream();
+        
+   //     return ResponseEntity.ok().build();
+  //  }
 }
